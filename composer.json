@@ -1,5 +1,6 @@
 {
     "name": "mediatis/one-trust-utility",
+    "description": "TYPO3 frontend and backend utilities around OneTrust",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
     "require": {
@@ -30,7 +31,7 @@
         "post-autoload-dump": [
             "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
         ],
-        "test": "phpunit --testdox --colors=always Tests/"
+        "unit-tests": "phpunit --testdox --colors=always Tests/Unit/"
     },
     "extra": {
         "typo3/cms": {
