@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Mediatis\OneTrustUtility\:
+    resource: '../Classes/*'
+
+  Mediatis\OneTrustUtility\Service\CookieService: ~
+
+  Mediatis\OneTrustUtility\Service\ConsentManager:
+    arguments:
+      $cookieService: '@Mediatis\OneTrustUtility\Service\CookieService'
+    public: true

@@ -1,0 +1,6 @@
+
+[{$plugin.tx_onetrustutility.settings.includeJs} == 1]
+page.includeJSFooter {
+  one-trust-utility = EXT:one_trust_utility/Resources/Public/JavaScript/one-trust-utility.min.js
+}
+[global]

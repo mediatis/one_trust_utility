@@ -1,0 +1,6 @@
+
+plugin.tx_onetrustutility {
+    settings {
+        includeJs = 0
+    }
+}
