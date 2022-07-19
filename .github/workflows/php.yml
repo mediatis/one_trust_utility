@@ -39,4 +39,4 @@ jobs:
           tools: composer:v2
 
       - name: Run unit tests
-        run: composer run-script test
+        run: composer run-script unit-tests
