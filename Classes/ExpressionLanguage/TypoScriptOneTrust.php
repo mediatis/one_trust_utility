@@ -8,8 +8,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class TypoScriptOneTrust
 {
-    /** @var ConsentManager */
-    protected $consentManager;
+    protected ConsentManager $consentManager;
 
     public function __construct()
     {
