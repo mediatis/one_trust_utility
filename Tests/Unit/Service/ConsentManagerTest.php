@@ -5,17 +5,16 @@ namespace Mediatis\OneTrustUtility\Tests\Unit\Service;
 use Mediatis\OneTrustUtility\Service\ConsentManager;
 use Mediatis\OneTrustUtility\Service\ConsentManagerInterface;
 use Mediatis\OneTrustUtility\Service\CookieServiceInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class ConsentManagerTest extends UnitTestCase
 {
-    private const VALID_DATESTAMP = 'Thu+Jul+14+2022+18%3A25%3A26+GMT%2B0200+(Central+European+Summer+Time)';
+    protected const VALID_DATESTAMP = 'Thu+Jul+14+2022+18%3A25%3A26+GMT%2B0200+(Central+European+Summer+Time)';
 
-    /** @var ConsentManager */
-    protected $subject;
+    protected ConsentManager $subject;
 
-    /** @var MockObject */
-    protected $cookieService;
+    protected MockObject $cookieService;
 
     // example values within consent cookie:
     // datestamp=Thu+Jul+14+2022+18%3A25%3A26+GMT%2B0200+(Central+European+Summer+Time)
@@ -34,7 +33,7 @@ class ConsentManagerTest extends UnitTestCase
     {
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(false);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -42,7 +41,7 @@ class ConsentManagerTest extends UnitTestCase
     {
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(false);
         $result = $this->subject->checkConsent('C0001', true);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /** @test */
@@ -50,7 +49,7 @@ class ConsentManagerTest extends UnitTestCase
     {
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(false);
         $result = $this->subject->checkConsent('C0001', false);
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -60,7 +59,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -70,7 +69,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -80,7 +79,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -90,7 +89,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -100,7 +99,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /** @test */
@@ -110,7 +109,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -120,7 +119,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /** @test */
@@ -130,7 +129,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -140,7 +139,7 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /** @test */
@@ -150,6 +149,6 @@ class ConsentManagerTest extends UnitTestCase
         $this->cookieService->method('checkCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn(true);
         $this->cookieService->method('getCookie')->with(ConsentManagerInterface::PERMISSION_COOKIE_NAME)->willReturn($cookieValue);
         $result = $this->subject->checkConsent('C0001');
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 }

@@ -4,11 +4,10 @@ namespace Mediatis\OneTrustUtility\Service;
 
 class ConsentManager implements ConsentManagerInterface
 {
-    /** @var CookieServiceInterface */
-    protected $cookieService;
+    protected CookieServiceInterface $cookieService;
 
     /** @var array<string,mixed>|null */
-    protected $data;
+    protected ?array $data = null;
 
     public function __construct(CookieServiceInterface $cookieService)
     {
