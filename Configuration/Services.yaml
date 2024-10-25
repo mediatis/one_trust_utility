@@ -7,9 +7,5 @@ services:
   Mediatis\OneTrustUtility\:
     resource: '../Classes/*'
 
-  Mediatis\OneTrustUtility\Service\CookieService: ~
-
-  Mediatis\OneTrustUtility\Service\ConsentManager:
-    arguments:
-      $cookieService: '@Mediatis\OneTrustUtility\Service\CookieService'
+  Mediatis\OneTrustUtility\ExpressionLanguage\TypoScriptConditionProvider:
     public: true
