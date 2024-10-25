@@ -3,18 +3,12 @@
 namespace Mediatis\OneTrustUtility\ExpressionLanguage;
 
 use Mediatis\OneTrustUtility\Service\ConsentManager;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class TypoScriptOneTrust
 {
-    protected ConsentManager $consentManager;
-
-    public function __construct()
-    {
-        // TODO for TYPO3 11 use dependency injection
-        $this->consentManager = GeneralUtility::makeInstance(ObjectManager::class)->get(ConsentManager::class);
-    }
+    public function __construct(
+        protected ConsentManager $consentManager,
+    ) {}
 
     public function checkConsent(string $level, bool $default = false): bool
     {

@@ -28,8 +28,14 @@ class ConsentManager implements ConsentManagerInterface
                 $valueStrings = explode('&', (string)$this->cookieService->getCookie(static::PERMISSION_COOKIE_NAME));
                 foreach ($valueStrings as $valueString) {
                     $pair = explode('=', $valueString);
-                    if (count($pair) !== 2) {
+                    if (count($pair) < 2) {
                         throw new ConsentManagementException('Invalid consent data format, expected KEY=VALUE, found "' . $valueString . '".');
+                    }
+                    if (count($pair) > 2) {
+                        $pair = [
+                            $pair[0],
+                            implode('=', array_slice($pair, 1)),
+                        ];
                     }
                     $key = $pair[0];
                     $value = urldecode($pair[1]);

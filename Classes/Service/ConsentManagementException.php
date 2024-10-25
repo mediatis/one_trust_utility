@@ -4,6 +4,4 @@ namespace Mediatis\OneTrustUtility\Service;
 
 use Exception;
 
-class ConsentManagementException extends Exception
-{
-}
+class ConsentManagementException extends Exception {}
